@@ -1,0 +1,83 @@
+{
+    "menus": [
+        [
+            {
+                "id": "101",
+                "value": "Vegetarian"
+            },
+            {
+                "id": "102",
+                "value": "Nut allergy"
+            },
+            {
+                "id": "103",
+                "value": "Halal"
+            }
+        ],
+        [
+            {
+                "id": "201",
+                "value": "Cashew chicken"
+            },
+            {
+                "id": "202",
+                "value": "Sweet and sour pork"
+            },
+            {
+                "id": "203",
+                "value": "Stir fried Tofu"
+            },
+            {
+                "id": "204",
+                "value": "Vegetable fried rice"
+            },
+            {
+                "id": "205",
+                "value": "Pad Thai"
+            },
+            {
+                "id": "206",
+                "value": "Massaman beef"
+            }
+        ],
+        [
+            {
+                "id": "301",
+                "value": "Peanut sauce"
+            },
+            {
+                "id": "302",
+                "value": "Oyster sauce"
+            },
+            {
+                "id": "303",
+                "value": "Vegetable spring rolls"
+            },
+            {
+                "id": "304",
+                "value": "Steamed rice"
+            }
+        ]
+    ],
+    "rules": {
+        "101": [
+            201,
+            202,
+            206,
+            302
+        ],
+        "102": [
+            201,
+            301
+        ],
+        "103": [
+            202
+        ],
+        "204": [
+            304
+        ],
+        "205": [
+            304
+        ]
+    }
+}

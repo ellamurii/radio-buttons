@@ -1,0 +1,99 @@
+$font-lg: 30px;
+$border-bottom-input: 3px dashed rgba(255, 255, 255, 0.25);
+$border-bottom-input-focus: 3px solid rgba(255, 255, 255, 0.75);
+$border-bottom-transition: border-bottom 0.5s ease;
+
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  font-size: $font-lg;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding: 30px 0px;
+}
+
+.menu-grp {
+  display: flex;
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px;
+  background-color: #111;
+  color: #fff;
+
+  .radio-group {
+    padding-bottom: 20px;
+    margin: auto;
+    display: inline-block;
+    vertical-align: middle;
+
+    @media (max-width: 48em) {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    li {
+      list-style: none;
+    }
+
+    .radio-label {
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+
+      @media (max-width: 48em) {
+        display: block;
+        margin: 10px 0;
+      }
+
+      input {
+        opacity: 0;
+        position: absolute;
+      }
+
+      &.disabled span {
+        text-decoration: line-through;
+        color: grey;
+      }
+
+      .inner-label {
+        position: relative;
+        display: inline-block;
+        padding-left: 40px;
+        font-size: 18px;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          border-bottom: $border-bottom-input;
+          width: 30px;
+          transition: $border-bottom-transition;
+        }
+      }
+
+      input:focus ~ .inner-label {
+        &:before {
+          border-bottom: $border-bottom-input-focus;
+        }
+      }
+
+      input:checked ~ .inner-label {
+        &:after {
+          content: '\2713';
+          color: #fff;
+          position: absolute;
+          font-size: 20px;
+          left: 9px;
+          bottom: 2px;
+        }
+      }
+    }
+  }
+}
