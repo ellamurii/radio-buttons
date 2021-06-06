@@ -4,16 +4,19 @@ import { MenuItem } from '../types/menuRules';
 interface Props {
   items: MenuItem[];
   grpIndex: number;
-  selection: { [key: string]: string };
+  selection: Dictionary<string>;
   incompatible: number[];
   isDisabled?: boolean;
   onChangeSelection: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const MenuRadioGroup = (props: Props) => {
-  const isNotCompatible = (id: string) => {
-    return props.incompatible.includes(parseInt(id, 10));
-  };
+  const isNotCompatible = React.useCallback(
+    (id: string) => {
+      return props.incompatible.includes(parseInt(id, 10));
+    },
+    [props.incompatible]
+  );
 
   const renderRadioButton = (item: MenuItem): ReactElement => {
     const isDisabled = isNotCompatible(item.id) || props.isDisabled;

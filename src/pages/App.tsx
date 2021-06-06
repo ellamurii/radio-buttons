@@ -5,8 +5,8 @@ import { MenuRules } from '../types/menuRules';
 import './styles.scss';
 
 const App = () => {
-  const [menuRules, setMenuRules] = useState({} as MenuRules);
-  const [selection, setSelection] = useState({} as { [key: string]: string });
+  const [menuRules, setMenuRules] = useState<MenuRules>();
+  const [selection, setSelection] = useState<Dictionary<string>>({});
   const [incompatible, setIncompatible] = useState([] as number[]);
 
   useEffect(() => {
@@ -17,10 +17,10 @@ const App = () => {
     fetchMenuRules();
   }, []);
 
-  const generateIncompatible = (selection: { [key: string]: string }) => {
+  const generateIncompatible = (selection: Dictionary<string>) => {
     const selectedIds = Object.values(selection);
     return selectedIds.reduce(
-      (a, b) => [...a, ...(menuRules.rules[b] || [])],
+      (a, b) => [...a, ...(menuRules?.rules[b] || [])],
       [] as number[]
     );
   };
@@ -30,7 +30,7 @@ const App = () => {
   }) => {
     const selectedIds = Object.entries(updatedSelection);
     const incompatible = generateIncompatible(updatedSelection);
-    const validSelection: { [key: string]: string } = {};
+    const validSelection: Dictionary<string> = {};
     selectedIds.forEach((entry) => {
       const [grpIndex, value] = entry;
       validSelection[grpIndex] = incompatible.includes(parseInt(value, 10))
